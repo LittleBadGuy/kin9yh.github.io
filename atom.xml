@@ -6,7 +6,7 @@
   <link href="https://kin9yh.github.io/atom.xml" rel="self"/>
   
   <link href="https://kin9yh.github.io/"/>
-  <updated>2021-10-10T04:05:17.990Z</updated>
+  <updated>2021-10-10T11:53:34.220Z</updated>
   <id>https://kin9yh.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HTB-Carrier</title>
+    <link href="https://kin9yh.github.io/2021/10/10/HTB-Carrier/"/>
+    <id>https://kin9yh.github.io/2021/10/10/HTB-Carrier/</id>
+    <published>2021-10-10T11:47:32.000Z</published>
+    <updated>2021-10-10T11:53:34.220Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Hack The Box是一个CTF挑战靶机平台，在线渗透测试平台。它能帮助你提升渗透测试技能和黑盒测试技能，它包含了一些不断更新的挑战，其中有模拟真实世界场景，也有倾向于CTF风格的挑战。&lt;br&gt;&lt;br&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="HTB" scheme="https://kin9yh.github.io/categories/HTB/"/>
+    
+    
+    <category term="HTB靶场" scheme="https://kin9yh.github.io/tags/HTB%E9%9D%B6%E5%9C%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>帅气昱哥</title>
@@ -87,7 +112,7 @@
     <link href="https://kin9yh.github.io/2021/10/08/test/"/>
     <id>https://kin9yh.github.io/2021/10/08/test/</id>
     <published>2021-10-08T12:04:23.000Z</published>
-    <updated>2021-10-08T12:04:58.913Z</updated>
+    <updated>2021-10-10T10:57:11.012Z</updated>
     
     
       
