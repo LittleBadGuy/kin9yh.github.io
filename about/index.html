@@ -38,8 +38,11 @@
 
 
 <body>
-
-
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+    <script type="text/javascript" src="/js/fireworks.js"></script>
+    <script type="text/javascript" src="/js/click_show_text.js"></script>
+    <script src="/js/cursor.js"></script>
     <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
@@ -402,103 +405,73 @@
     </div>
 </div>
 
-<main class="content">
+    <main class="content">
 
-    <div id="aboutme" class="container about-container">
-        <div class="card">
-            <div class="card-content">
-                <div class="row">
-                    <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
-                        
-<div class="statis">
-    <span class="count"><a href="/">6</a></span>
-    <span class="name">文章</span>
-</div>
-
-
-
-<div class="statis">
-    <span class="count"><a href="/categories">1</a></span>
-    <span class="name">分类</span>
-</div>
-
-
-
-<div class="statis">
-    <span class="count"><a href="/tags">3</a></span>
-    <span class="name">标签</span>
-</div>
-
-
-                    </div>
-                    <div class="col s12 m12 l4">
-                        <div class="profile center-align">
-                            <div class="avatar">
-                                <img src="/medias/avatar.jpg" alt="kin9yh"
-                                     class="circle responsive-img avatar-img">
-                            </div>
-                            <div class="author">
-                                <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
-                                    
-<div class="statis">
-    <span class="count"><a href="/">6</a></span>
-    <span class="name">文章</span>
-</div>
-
-
-
-<div class="statis">
-    <span class="count"><a href="/categories">1</a></span>
-    <span class="name">分类</span>
-</div>
-
-
-
-<div class="statis">
-    <span class="count"><a href="/tags">3</a></span>
-    <span class="name">标签</span>
-</div>
-
-
-                                </div>
-                                <div class="title">kin9yh</div>
-                                <div class="career">在读研究生</div>
-                                <div class="social-link hide-on-large-only" data-aos="zoom-in-left">
-                                    
-    <a href="https://github.com/kin9yh" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:837196849@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=837196849" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 837196849" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-
-
-
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col l4 hide-on-med-and-down" data-aos="zoom-in-left">
-                        <div class="social-link">
+        <div id="aboutme" class="container about-container">
+            <div class="card">
+                <div class="card-content">
+                    <div class="row">
+                        <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                             
+<div class="statis">
+    <span class="count"><a href="/">6</a></span>
+    <span class="name">文章</span>
+</div>
+
+
+
+<div class="statis">
+    <span class="count"><a href="/categories">1</a></span>
+    <span class="name">分类</span>
+</div>
+
+
+
+<div class="statis">
+    <span class="count"><a href="/tags">3</a></span>
+    <span class="name">标签</span>
+</div>
+
+
+                        </div>
+                        <div class="col s12 m12 l4">
+                            <div class="profile center-align">
+                                <div class="avatar">
+                                    <img src="/medias/avatar.jpg"
+                                        alt="kin9yh" class="circle responsive-img avatar-img">
+                                </div>
+                                <div class="author">
+                                    <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
+                                        
+<div class="statis">
+    <span class="count"><a href="/">6</a></span>
+    <span class="name">文章</span>
+</div>
+
+
+
+<div class="statis">
+    <span class="count"><a href="/categories">1</a></span>
+    <span class="name">分类</span>
+</div>
+
+
+
+<div class="statis">
+    <span class="count"><a href="/tags">3</a></span>
+    <span class="name">标签</span>
+</div>
+
+
+                                    </div>
+                                    <div class="title">
+                                        kin9yh
+                                    </div>
+                                    <div class="career">
+                                        在读研究生
+                                    </div>
+                                    <div class="social-link hide-on-large-only" data-aos="zoom-in-left">
+                                        
     <a href="https://github.com/kin9yh" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
@@ -526,22 +499,108 @@
 
 
 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col l4 hide-on-med-and-down" data-aos="zoom-in-left">
+                            <div class="social-link">
+                                
+    <a href="https://github.com/kin9yh" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:837196849@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=837196849" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 837196849" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="introduction center-align" data-aos="fade-up">If you wish to succeed, you should use persistence as your good friend, experience as your reference, prudence as your brother and hope as your sentry.</div>
+                    <div class="introduction center-align" data-aos="fade-up">
+                        If you wish to succeed, you should use persistence as your good friend, experience as your reference, prudence as your brother and hope as your sentry.
+                    </div>
 
-                
 
-               
+                   
+                <main class="content">
+                    <!-- 文章内容详情 -->
+<div id="artDetail">
     
-                
 
+    
+
+    <br/>
+    <div id="articleContent">
+        <h1 id="人生不可避免有各种而样的遗憾，但我仍相信爱情"><a href="#人生不可避免有各种而样的遗憾，但我仍相信爱情" class="headerlink" title="人生不可避免有各种而样的遗憾，但我仍相信爱情"></a>人生不可避免有各种而样的遗憾，但我仍相信爱情</h1><style>.bbplayer{width: 100%; max-width: 850px; margin: auto}</style><div class="bbplayer"><iframe class="bbplayer" id="mmedia-UaLVPEMQlNLTAUjM" src="https://player.bilibili.com/player.html?bvid=BV1oW411b7hx&amp;page=1&amp;high_quality=1&amp;danmaku=true" allowfullscreen="allowfullscreen" scrolling="no" border="0" frameborder="0" framespacing="0" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts allow-popups"></iframe></div><script> document.getElementById("mmedia-UaLVPEMQlNLTAUjM").style.height=document.getElementById("mmedia-UaLVPEMQlNLTAUjM").scrollWidth*0.76+"px";
+    window.onresize = function(){
+      document.getElementById("mmedia-UaLVPEMQlNLTAUjM").style.height=document.getElementById("mmedia-UaLVPEMQlNLTAUjM").scrollWidth*0.76+"px";
+    }; </script>
+
+<p>sdad</p>
+<p>asdsad</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">战无不胜的毛泽东思想万岁！中国人民大团结万岁！世界人民大团结万岁！全世界无产者联合起来！</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>作者：毛泽东</code></p>
+<h1 id="001-中国社会各阶级的分析"><a href="#001-中国社会各阶级的分析" class="headerlink" title="001 中国社会各阶级的分析"></a>001 中国社会各阶级的分析</h1><blockquote>
+<p>中国社会各阶级的分析</p>
+</blockquote>
+<p>（一九二五年十二月一日）</p>
+
+        
+    </div>
+
+   
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+                </main>
+
+
+
+
+                </div>
             </div>
         </div>
-    </div>
-</main>
-
+    </main>
 
     <footer class="page-footer bg-color">
     

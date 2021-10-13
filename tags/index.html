@@ -38,8 +38,11 @@
 
 
 <body>
-
-
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+    <script type="text/javascript" src="/js/fireworks.js"></script>
+    <script type="text/javascript" src="/js/click_show_text.js"></script>
+    <script src="/js/cursor.js"></script>
     <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
@@ -417,20 +420,20 @@
                 </a>
                 
                 
-                <a href="/tags/Sangfor/" title="Sangfor: 2">
+                <a href="/tags/test/" title="test: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="Sangfor" style="background-color: #F5EEF8;">Sangfor
-                        <span class="tag-length">2</span>
+                            data-tagname="test" style="background-color: #F5EEF8;">test
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/test/" title="test: 1">
+                <a href="/tags/Sangfor/" title="Sangfor: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="test" style="background-color: #D5F5E3;">test
-                        <span class="tag-length">1</span>
+                            data-tagname="Sangfor" style="background-color: #D5F5E3;">Sangfor
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
@@ -458,7 +461,7 @@
 <script type="text/javascript">
     
 
-    $('#tag-wordcloud').jQCloud([{"text":"HTB靶场","weight":1,"link":"/tags/HTB靶场/"},{"text":"Sangfor","weight":2,"link":"/tags/Sangfor/"},{"text":"test","weight":1,"link":"/tags/test/"}], {
+    $('#tag-wordcloud').jQCloud([{"text":"HTB靶场","weight":1,"link":"/tags/HTB靶场/"},{"text":"test","weight":1,"link":"/tags/test/"},{"text":"Sangfor","weight":2,"link":"/tags/Sangfor/"}], {
         autoResize: true
     });
 </script>
