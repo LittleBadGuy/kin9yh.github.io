@@ -6,7 +6,7 @@
   <link href="https://kin9yh.github.io/atom.xml" rel="self"/>
   
   <link href="https://kin9yh.github.io/"/>
-  <updated>2021-12-15T13:37:49.573Z</updated>
+  <updated>2021-12-15T14:19:49.062Z</updated>
   <id>https://kin9yh.github.io/</id>
   
   <author>
@@ -17,17 +17,44 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Nosql注入总结</title>
+    <link href="https://kin9yh.github.io/7364/"/>
+    <id>https://kin9yh.github.io/7364/</id>
+    <published>2021-12-15T14:16:44.000Z</published>
+    <updated>2021-12-15T14:19:49.062Z</updated>
+    
+    
+    
+    
+    <category term="WEB安全" scheme="https://kin9yh.github.io/categories/WEB%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="Nosql注入" scheme="https://kin9yh.github.io/tags/Nosql%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Rctf_Web_CandyShop</title>
     <link href="https://kin9yh.github.io/13619/"/>
     <id>https://kin9yh.github.io/13619/</id>
     <published>2021-12-15T13:29:06.000Z</published>
-    <updated>2021-12-15T13:37:49.573Z</updated>
+    <updated>2021-12-15T14:19:23.239Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;0x01基础知识&quot;&gt;&lt;a href=&quot;#0x01基础知识&quot; class=&quot;headerlink&quot; title=&quot;0x01基础知识&quot;&gt;&lt;/a&gt;0x01基础知识&lt;/h1&gt;&lt;h2 id=&quot;1-1-javaScript-基础&quot;&gt;&lt;a</summary>
+        
+      
     
     
     
+    <category term="CTF" scheme="https://kin9yh.github.io/categories/CTF/"/>
     
     
-    <category term="Rctf" scheme="https://kin9yh.github.io/tags/Rctf/"/>
+    <category term="Rctf(2021)" scheme="https://kin9yh.github.io/tags/Rctf-2021/"/>
     
   </entry>
   
