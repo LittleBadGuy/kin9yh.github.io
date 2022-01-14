@@ -6,7 +6,7 @@
   <link href="https://kin9yh.github.io/atom.xml" rel="self"/>
   
   <link href="https://kin9yh.github.io/"/>
-  <updated>2021-12-15T14:23:43.167Z</updated>
+  <updated>2022-01-14T06:39:03.740Z</updated>
   <id>https://kin9yh.github.io/</id>
   
   <author>
@@ -15,6 +15,107 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Buuctf</title>
+    <link href="https://kin9yh.github.io/16577/"/>
+    <id>https://kin9yh.github.io/16577/</id>
+    <published>2022-01-14T06:25:52.000Z</published>
+    <updated>2022-01-14T06:39:03.740Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;每个&lt;strong&gt;方向&lt;/strong&gt;每天&lt;strong&gt;一道题&lt;/strong&gt;！&lt;br&gt;准备把buuctf的题全都刷了，开始！&lt;br&gt;&lt;strong&gt;持续更新~~&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;0x01总章&quot;&gt;&lt;a href=&quot;#0x01总章&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Buuctf-Reverse</title>
+    <link href="https://kin9yh.github.io/16579/"/>
+    <id>https://kin9yh.github.io/16579/</id>
+    <published>2022-01-14T06:24:53.000Z</published>
+    <updated>2022-01-14T06:26:43.014Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Buuctf-Crypto</title>
+    <link href="https://kin9yh.github.io/7321/"/>
+    <id>https://kin9yh.github.io/7321/</id>
+    <published>2022-01-14T06:24:38.000Z</published>
+    <updated>2022-01-14T06:27:15.264Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Buuctf-Misc</title>
+    <link href="https://kin9yh.github.io/16581/"/>
+    <id>https://kin9yh.github.io/16581/</id>
+    <published>2022-01-14T06:24:26.000Z</published>
+    <updated>2022-01-14T06:27:04.036Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Buuctf-Pwn</title>
+    <link href="https://kin9yh.github.io/16580/"/>
+    <id>https://kin9yh.github.io/16580/</id>
+    <published>2022-01-14T06:23:35.000Z</published>
+    <updated>2022-01-14T06:26:58.056Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Buuctf-Web</title>
+    <link href="https://kin9yh.github.io/16578/"/>
+    <id>https://kin9yh.github.io/16578/</id>
+    <published>2022-01-14T06:13:14.000Z</published>
+    <updated>2022-01-14T06:49:24.666Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;0x00-强网杯-2019-随便注&quot;&gt;&lt;a href=&quot;#0x00-强网杯-2019-随便注&quot; class=&quot;headerlink&quot; title=&quot;0x00[强网杯 2019]随便注&quot;&gt;&lt;/a&gt;0x00[强网杯 2019]随便注&lt;/h2&gt;&lt;h3</summary>
+        
+      
+    
+    
+    
+    <category term="Buuctf" scheme="https://kin9yh.github.io/categories/Buuctf/"/>
+    
+    
+    <category term="Buuctf-Web" scheme="https://kin9yh.github.io/tags/Buuctf-Web/"/>
+    
+    <category term="web" scheme="https://kin9yh.github.io/tags/web/"/>
+    
+  </entry>
   
   <entry>
     <title>Nosql注入总结</title>
