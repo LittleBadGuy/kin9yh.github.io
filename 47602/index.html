@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="sql注入(fuzz), kin9yh’s blog">
+    <meta name="keywords" content="burpsuite-Intruder-Payloads, kin9yh’s blog">
     <meta name="description" content="kin9yh的小小站">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>sql注入(fuzz) | kin9yh’s blog</title>
+    <title>burpsuite-Intruder-Payloads | kin9yh’s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -389,12 +389,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">sql注入(fuzz)</h1>
+                    <h1 class="description center-align post-title">burpsuite-Intruder-Payloads</h1>
                 </div>
             </div>
         </div>
@@ -545,221 +545,38 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="0x01-Sql注入fuzz测试过滤关键字-waf-fuzz测试"><a href="#0x01-Sql注入fuzz测试过滤关键字-waf-fuzz测试" class="headerlink" title="0x01 Sql注入fuzz测试过滤关键字-waf fuzz测试"></a>0x01 Sql注入fuzz测试过滤关键字-waf fuzz测试</h2><h3 id="1-字典如下："><a href="#1-字典如下：" class="headerlink" title="1.字典如下："></a>1.字典如下：</h3><pre class="language-none"><code class="language-none">
-length 
-+
-handler
-like
-select 
-sleep
-database
-delete
-having
-or
-as
--~
-BENCHMARK
-limit
-left
-select
-insert
-sys.schema_auto_increment_columns
-join
-right
-#
-&amp;
-&amp;&amp;
-\
-handler
--- -
---
---+
-INFORMATION
---
-;
-!
-%
-+
-xor
-&lt;&gt;
-(
-&gt;
-&lt;
-)
-.
-^
-=
-AND
-BY
-CAST
-COLUMN
-COUNT
-CREATE
-END
-case
-'1'='1
-when
-admin'
-"
-length 
-+
-length
-REVERSE
-
-ascii
-select 
-database
-left
-right
-'
-union
-||
-oorr
-/
-//
-//*
-*/*
-/**/
-anandd
-GROUP
-HAVING
-IF
-INTO
-JOIN
-LEAVE
-LEFT
-LEVEL
-sleep
-LIKE
-NAMES
-NEXT
-NULL
-OF
-ON
-|
-infromation_schema
-user
-OR
-ORDER
-ORD
-SCHEMA
-SELECT
-SET
-TABLE
-THEN
-UPDATE
-USER
-USING
-VALUE
-VALUES
-WHEN
-WHERE
-ADD
-AND
-prepare
-set
-update
-delete
-drop
-inset
-CAST
-COLUMN
-CONCAT
-GROUP_CONCAT
-group_concat
-CREATE
-DATABASE
-DATABASES
-alter
-DELETE
-DROP
-floor
-rand()
-information_schema.tables
-TABLE_SCHEMA
-%df
-concat_ws()
-concat
-LIMIT
-ORD
-ON
-extractvalue
-order 
-CAST()
-by
-ORDER
-OUTFILE
-RENAME
-REPLACE
-SCHEMA
-SELECT
-SET
-updatexml
-SHOW
-SQL
-TABLE
-THEN
-TRUE
-instr
-benchmark
-format
-bin
-substring
-ord
-
-UPDATE
-VALUES
-VARCHAR
-VERSION
-WHEN
-WHERE
-/*
-`
-  
-,
-users
-%0a
-%0b
-mid
-for
-BEFORE
-REGEXP
-RLIKE
-in
-sys schemma
-SEPARATOR
-XOR
-CURSOR
-FLOOR
-sys.schema_table_statistics_with_buffer
-INFILE
-count
-%0c
-from
-%0d
-%a0
-=
-@
-else</code></pre>
-
-<h3 id="2-打开burpsuit，右击鼠标，send-to-intruder"><a href="#2-打开burpsuit，右击鼠标，send-to-intruder" class="headerlink" title="2.打开burpsuit，右击鼠标，send to intruder"></a>2.打开burpsuit，右击鼠标，send to intruder</h3><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220114153739022.png" alt="image-20220114153739022">
-
-
-
-<h3 id="3-在position选中sniper选中需要修改的位置，在payload添加字典，最后start-attack"><a href="#3-在position选中sniper选中需要修改的位置，在payload添加字典，最后start-attack" class="headerlink" title="3.在position选中sniper选中需要修改的位置，在payload添加字典，最后start attack"></a>3.在position选中sniper选中需要修改的位置，在payload添加字典，最后start attack</h3><h4 id="四种攻击类型："><a href="#四种攻击类型：" class="headerlink" title="四种攻击类型："></a>四种攻击类型：</h4><ol>
+                <h2 id="1-四种攻击类型："><a href="#1-四种攻击类型：" class="headerlink" title="1.四种攻击类型："></a>1.四种攻击类型：</h2><ol>
 <li><p><strong>Sniper标签</strong> 这个是我们最常用的，Sniper是狙击手的意思。这个模式会使用单一的payload【就是导入字典的payload】组。它会针对每个position中$$位置设置payload。这种攻击类型适合对常见漏洞中的请求参数单独地进行测试。攻击中的请求总数应该是position数量和payload数量的乘积。</p>
-</li>
+<!--人话就是，设置一个位置，然后跑一个字典--></li>
 <li><p><strong>Battering ram</strong> – 这一模式是使用单一的payload组。它会重复payload并且一次把所有相同的payload放入指定的位置中。这种攻击适合那种需要<strong>在请求中把相同的输入放到多个位置</strong>的情况。请求的总数是payload组中payload的总数。简单说就是一个playload字典同时应用到多个position中</p>
-</li>
+<!--人话就是，设置多个位置，然后跑一个字典--></li>
 <li><p><strong>Pitchfork</strong> – 这一模式是使用多个payload组。对于定义的位置可以使用不同的payload组。攻击会同步迭代所有的payload组，把payload放入每个定义的位置中。比如：<strong>position中A处有a字典，B处有b字典，则a【1】将会对应b【1】</strong>进行attack处理，这种攻击类型非常适合那种不同位置中需要插入不同但相关的输入的情况。请求的数量应该是最小的payload组中的payload数量</p>
 </li>
 </ol>
+<p>​        <!--人话就是，设置多个位置，然后跑多个字典，按字典顺序一一对应--></p>
 <ol start="4">
-<li><strong>Cluster bomb</strong> – 这种模式会使用多个payload组。每个定义的位置中有不同的payload组。攻击会迭代每个payload组，每种payload组合都会被测试一遍。比如：position中A处有a字典，B处有b字典，则两个字典将会循环搭配组合进行attack处理这种攻击适用于那种位置中需要不同且不相关或者未知的输入的攻击。<strong>攻击请求的总数是各payload组中payload数量的乘积</strong>。</li>
+<li><p><strong>Cluster bomb</strong> – 这种模式会使用多个payload组。每个定义的位置中有不同的payload组。攻击会迭代每个payload组，每种payload组合都会被测试一遍。比如：position中A处有a字典，B处有b字典，则两个字典将会循环搭配组合进行attack处理这种攻击适用于那种位置中需要不同且不相关或者未知的输入的攻击。<strong>攻击请求的总数是各payload组中payload数量的乘积</strong>。</p>
+<!--人话就是，设置多个位置，然后遍历所有的情况，比如第一个字典有10个参数，每个参数不变，后边的字典跑完再换下一个参数--></li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220114154835836.png" alt="image-20220114154835836"></p>
-<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220114154557483.png" alt="image-20220114154557483"></p>
-<h4 id="4-最终根据length判断哪些被过滤"><a href="#4-最终根据length判断哪些被过滤" class="headerlink" title="4.最终根据length判断哪些被过滤"></a>4.最终根据length判断哪些被过滤</h4><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220114155135097.png" alt="image-20220114155135097"></p>
+<h2 id="2-设置payload"><a href="#2-设置payload" class="headerlink" title="2.设置payload"></a>2.设置payload</h2><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220114161140960.png" alt="image-20220114161140960"></p>
+<h3 id="Simple-list"><a href="#Simple-list" class="headerlink" title="Simple list"></a>Simple list</h3><p>首先Simple list可以算是最基本的，用法很简单，可以直接输入按Add，也可以上传文档。<br>虽然这边我们demo都是手动输入，不过实际上要执行暴力破解等动作，通常Payload一定会是很大量的，用手输入可能会累死，所以实际上都是用选择上传文件的方式。</p>
+<p>谈起Payload与字典文件可能又会无限发散，这边就随便放个SecLists让大家参考参考:<br><a target="_blank" rel="noopener" href="https://github.com/danielmiessler/SecLists/tree/master/Passwords">https://github.com/danielmiessler/SecLists/tree/master/Passwords</a></p>
+<h3 id="Runtime-file"><a href="#Runtime-file" class="headerlink" title="Runtime file"></a>Runtime file</h3><p>Runtime file 是指定文档，让你直接选择文档，每一行就是一个Payload，其实这个跟Simple list直接Load就是一样的意思而已，只是Simple list如果汇入的文档很大，会因为画面要显示出来给你看，所以会跑很久，Runtime file没有要显示给你看，所以没这个问题。</p>
+<h3 id="Custom-iterator"><a href="#Custom-iterator" class="headerlink" title="Custom iterator"></a>Custom iterator</h3><p>有Position 1~8</p>
+<p>攻击payload = position1 + position2 +…….+ position8。</p>
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220114162610179.png" alt="image-20220114162610179"></p>
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220114162621131.png" alt="image-20220114162621131"></p>
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220114162635869.png" alt="image-20220114162635869"></p>
+<p><strong>可以看到最终的攻击payload是所设置字典的遍历，最终组合成一个参数。（有点像上边讲的Cluster bomb，但是要注意这里只可以看作Cluster bomb的一个参数）</strong></p>
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220114162653893.png" alt="image-20220114162653893"></p>
+<h3 id="Character-substitution"><a href="#Character-substitution" class="headerlink" title="Character substitution"></a>Character substitution</h3><p>Character substitution 字符替换的意思，更换输入payload文件中的字符。<br>假设payload输入abcd，可以看到字符替换的规则有a-&gt;4,b-&gt;8；</p>
+<p>所以暴力破解时送完原始的payload abcd之后。有单独把a换成4，有单独把b换成8，也有两个都换的。</p>
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220114163517187.png" alt="image-20220114163517187"></p>
+<h3 id="Recursive-grep"><a href="#Recursive-grep" class="headerlink" title="Recursive grep"></a>Recursive grep</h3><p>是从上一次的响应结果中，取得部分特定内容作为下次请求的Payload。</p>
+<p>burp抓取tokon爆破</p>
+<h3 id="Illegal-Unicode"><a href="#Illegal-Unicode" class="headerlink" title="Illegal Unicode"></a>Illegal Unicode</h3><p>这个我也是第一次发现原来Burp还有这一招，利用Illegal Unicode进行Bypass。<br>因为不是很理解，让我先默默跳过…</p>
+<h3 id="Character-blocks"><a href="#Character-blocks" class="headerlink" title="Character blocks"></a>Character blocks</h3><p>Character blocks，举例，可以插入很多个A，起始要几个，每次增加多少个A，到多少个要停止，通常比较适用在测试overflow。</p>
+<p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zbj18314469395/article/details/115429675">Intruder Attack type&amp;Payloads – 拥有上千种姿态的攻击模式</a></p>
 
                 
             </div>
@@ -786,7 +603,7 @@ else</code></pre>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://kin9yh.github.io/16358/">https://kin9yh.github.io/16358/</a>
+                    <a href="https://kin9yh.github.io/47602/">https://kin9yh.github.io/47602/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -995,13 +812,13 @@ else</code></pre>
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/undefined/">
+                <a href="/65432/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="type">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="burpsuite-绕过tokon爆破">
                         
-                        <span class="card-title">type</span>
+                        <span class="card-title">burpsuite-绕过tokon爆破</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1032,13 +849,13 @@ else</code></pre>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/16577/">
+                <a href="/undefined/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Buuctf">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="type">
                         
-                        <span class="card-title">Buuctf</span>
+                        <span class="card-title">type</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
