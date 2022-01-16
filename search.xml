@@ -4,13 +4,32 @@
   
     
     <entry>
+      <title>test</title>
+      <link href="//63534/"/>
+      <url>//63534/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>burpsuite-绕过tokon爆破</title>
       <link href="//65432/"/>
       <url>//65432/</url>
       
-        <content type="html"><![CDATA[<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220114175453582.png" alt="image-20220114175453582"></p><p>旧版本burp在 Intruder-option-Request Engine下设置线程，新版本在Intruder-resource Pool下</p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220114181326954.png" alt="image-20220114181326954"></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="burpsuite-绕过tokon爆破"><a href="#burpsuite-绕过tokon爆破" class="headerlink" title="burpsuite-绕过tokon爆破"></a>burpsuite-绕过tokon爆破</h2><h3 id="1-当一个界面带有tokon，"><a href="#1-当一个界面带有tokon，" class="headerlink" title="1.当一个界面带有tokon，"></a>1.当一个界面带有tokon，</h3><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220116224005179.png" alt="image-20220116224005179"></p><h3 id="2-设置attack-type为-pitchfork-修改username，password与tokon三个参数"><a href="#2-设置attack-type为-pitchfork-修改username，password与tokon三个参数" class="headerlink" title="2.设置attack type为 pitchfork   修改username，password与tokon三个参数"></a>2.设置attack type为 pitchfork   修改username，password与tokon三个参数</h3><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220114175453582.png" alt="image-20220114175453582"></p><h3 id="3-设置payload，payload1-username-payload-2-password-payload3-tockon"><a href="#3-设置payload，payload1-username-payload-2-password-payload3-tockon" class="headerlink" title="3.设置payload，payload1(username),payload 2(password),payload3(tockon)"></a>3.设置payload，payload1(username),payload 2(password),payload3(tockon)</h3><p>payload3(tockon) 的  payload type 为Recursibe grep</p><p><a href="https://kin9yh.github.io/47602/">burpsuite-Intruder-Payloads (kin9yh)</a></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220116224418726.png" alt="image-20220116224418726"></p><h3 id="4-设置Intruder的Options选项，找Grep-Extract-选择Extract-the-following-items-from-responses，点击Add"><a href="#4-设置Intruder的Options选项，找Grep-Extract-选择Extract-the-following-items-from-responses，点击Add" class="headerlink" title="4.设置Intruder的Options选项，找Grep-Extract,选择Extract the following items from responses，点击Add"></a>4.设置Intruder的Options选项，找Grep-Extract,选择Extract the following items from responses，点击Add</h3><p>在弹出的窗口中选中user_token值，点击OK（注意保存该user_token值，接下来将设置该值为初始参数值）</p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220116225140591.png" alt="image-20220116225140591"></p><h3 id="5-设置线程为1-因为需要从前一个response包中获取tokon所以线程必须设为1"><a href="#5-设置线程为1-因为需要从前一个response包中获取tokon所以线程必须设为1" class="headerlink" title="5.设置线程为1   因为需要从前一个response包中获取tokon所以线程必须设为1"></a>5.设置线程为1   因为需要从前一个response包中获取tokon所以线程必须设为1</h3><p>旧版本burp在 Intruder-option-Request Engine下设置线程，新版本在Intruder-resource Pool下</p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220114181326954.png" alt="image-20220114181326954"></p><h3 id="6-为payload3（tockon）添加攻击载荷"><a href="#6-为payload3（tockon）添加攻击载荷" class="headerlink" title="6.为payload3（tockon）添加攻击载荷"></a>6.为payload3（tockon）添加攻击载荷</h3><p>将payload type设为Recursive grep，并为initial payload for first request填入参数值（即刚才保存的user_token值）</p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220116225700001.png" alt="image-20220116225700001"></p><p>5fd35edd726857237a65e040b632e7d9</p><h3 id="7-点击Start-attack开始攻击，攻击成功"><a href="#7-点击Start-attack开始攻击，攻击成功" class="headerlink" title="7.点击Start attack开始攻击，攻击成功"></a>7.点击Start attack开始攻击，攻击成功</h3><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220116230504839.png" alt="image-20220116230504839"></p>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> burp </tag>
+            
+        </tags>
       
     </entry>
     
