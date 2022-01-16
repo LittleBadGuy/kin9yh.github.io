@@ -507,9 +507,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/burp/">
+                                <span class="chip bg-color">burp</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -545,7 +549,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-四种攻击类型："><a href="#1-四种攻击类型：" class="headerlink" title="1.四种攻击类型："></a>1.四种攻击类型：</h2><ol>
+                <h2 id="burpsuite-Intruder-Payloads"><a href="#burpsuite-Intruder-Payloads" class="headerlink" title="burpsuite-Intruder-Payloads"></a>burpsuite-Intruder-Payloads</h2><h2 id="1-四种攻击类型："><a href="#1-四种攻击类型：" class="headerlink" title="1.四种攻击类型："></a>1.四种攻击类型：</h2><ol>
 <li><p><strong>Sniper标签</strong> 这个是我们最常用的，Sniper是狙击手的意思。这个模式会使用单一的payload【就是导入字典的payload】组。它会针对每个position中$$位置设置payload。这种攻击类型适合对常见漏洞中的请求参数单独地进行测试。攻击中的请求总数应该是position数量和payload数量的乘积。</p>
 <!--人话就是，设置一个位置，然后跑一个字典--></li>
 <li><p><strong>Battering ram</strong> – 这一模式是使用单一的payload组。它会重复payload并且一次把所有相同的payload放入指定的位置中。这种攻击适合那种需要<strong>在请求中把相同的输入放到多个位置</strong>的情况。请求的总数是payload组中payload的总数。简单说就是一个playload字典同时应用到多个position中</p>
@@ -574,8 +578,24 @@
 <p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220114163517187.png" alt="image-20220114163517187"></p>
 <h3 id="Recursive-grep"><a href="#Recursive-grep" class="headerlink" title="Recursive grep"></a>Recursive grep</h3><p>是从上一次的响应结果中，取得部分特定内容作为下次请求的Payload。</p>
 <p>burp抓取tokon爆破</p>
-<h3 id="Illegal-Unicode"><a href="#Illegal-Unicode" class="headerlink" title="Illegal Unicode"></a>Illegal Unicode</h3><p>这个我也是第一次发现原来Burp还有这一招，利用Illegal Unicode进行Bypass。<br>因为不是很理解，让我先默默跳过…</p>
-<h3 id="Character-blocks"><a href="#Character-blocks" class="headerlink" title="Character blocks"></a>Character blocks</h3><p>Character blocks，举例，可以插入很多个A，起始要几个，每次增加多少个A，到多少个要停止，通常比较适用在测试overflow。</p>
+<p><a href="https://kin9yh.github.io/65432/">burpsuite-绕过tokon爆破 (kin9yh)</a></p>
+<h3 id="Illegal-Unicode"><a href="#Illegal-Unicode" class="headerlink" title="Illegal Unicode"></a>Illegal Unicode</h3><h3 id="Character-blocks"><a href="#Character-blocks" class="headerlink" title="Character blocks"></a>Character blocks</h3><p>Character blocks，举例，可以插入很多个A(Base string)，起始要几个(Min length)，每次增加(Step)多少个A，到多少个要停止(Max length)，通常比较适用在测试overflow。</p>
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220116232335757.png" alt="image-20220116232335757"></p>
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220116232622859.png" alt="image-20220116232622859"></p>
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220116232727529.png" alt="image-20220116232727529"></p>
+<h3 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h3><p>Number测试数字，这个也算是实际工作上很常用到的，可以设定起始多少到结尾多少，间隔多少数字，<br>也可以选择十进制与Hex，还有是否要小数点。</p>
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220116233434817.png" alt="image-20220116233434817"></p>
+<h3 id="Datas"><a href="#Datas" class="headerlink" title="Datas"></a>Datas</h3><p>如其名，就是用来测时间日期格式的Payload。</p>
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220116233615980.png" alt="image-20220116233615980"></p>
+<h3 id="Brute-Force"><a href="#Brute-Force" class="headerlink" title="Brute Force"></a>Brute Force</h3><p>Brute Force是纯粹的暴力破解，这个其实算是我除了Simple与Number以外，可能比较常用到的之一，Payload的产生方式就是Character set中的所有<strong>字符排列组合</strong>都会试过，那也可以设定最小的长度与最大的长度，不过要注意就是Brute Force很容易一不小心Payload数量就超多的。<br><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220116233942122.png" alt="image-20220116233942122"></p>
+<h3 id="Null-payloads"><a href="#Null-payloads" class="headerlink" title="Null payloads"></a>Null payloads</h3><p>Null payloads 其实就是重复同样的原始请求，没有进行修改，你可能会好奇这样有什么意义？！ 那这个就是等到你遇到需要的场景就会知道意义了，通常可能是做观察与搜集数据的时候用，比如要确认一直重复发起一样的请求，是否服务器都会给一样的响应。</p>
+<h3 id="Character-frobber"><a href="#Character-frobber" class="headerlink" title="Character frobber"></a>Character frobber</h3><p>Character frobber 会按照顺序去递增每个字符的一个ASCII，感觉这个有点冷门，好像其实是满实用的，用途主要应该是用来确认token的每个字符是否有作用。</p>
+<h3 id="Bit-flipper"><a href="#Bit-flipper" class="headerlink" title="Bit flipper"></a>Bit flipper</h3><h3 id="Username-generator"><a href="#Username-generator" class="headerlink" title="Username generator"></a>Username generator</h3><p>用户名生成。</p>
+<h3 id="ECB-block-shuffler"><a href="#ECB-block-shuffler" class="headerlink" title="ECB block shuffler"></a>ECB block shuffler</h3><p>ECB block shuffler 牵扯到加密模式，先不管他。</p>
+<h2 id="Payload下还有两个区块，必须要提一下，姑且不管你有没有要用的，至少先知道。"><a href="#Payload下还有两个区块，必须要提一下，姑且不管你有没有要用的，至少先知道。" class="headerlink" title="Payload下还有两个区块，必须要提一下，姑且不管你有没有要用的，至少先知道。"></a>Payload下还有两个区块，必须要提一下，姑且不管你有没有要用的，至少先知道。</h2><h3 id="Payload-Processing"><a href="#Payload-Processing" class="headerlink" title="Payload Processing"></a>Payload Processing</h3><p>是也可以对发出去的Payload进行加工处理，例如可以加入前缀、后缀字符、只截取字符串的某一部分等；后缀常见的可能像是Email结尾的字符，比如@gmail.com之类的。<br>可以利用match替换，可以反转，可以编码，许多方法可以选择。</p>
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220116234453915.png" alt="image-20220116234453915"></p>
+<h3 id="Payload-Encoding"><a href="#Payload-Encoding" class="headerlink" title="Payload Encoding"></a>Payload Encoding</h3><p>最下面的Payload Encoding，这边则是勾选的话，Payload如果有match的characters就会进行URL-encode。</p>
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220116234647176.png" alt="image-20220116234647176"></p>
 <p>参考链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zbj18314469395/article/details/115429675">Intruder Attack type&amp;Payloads – 拥有上千种姿态的攻击模式</a></p>
 
                 
@@ -640,7 +660,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/burp/">
+                                    <span class="chip bg-color">burp</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
