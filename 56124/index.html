@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Buuctf-Web, kin9yh’s blog">
+    <meta name="keywords" content="tqlctf, kin9yh’s blog">
     <meta name="description" content="kin9yh的小小站">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Buuctf-Web | kin9yh’s blog</title>
+    <title>tqlctf | kin9yh’s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -389,12 +389,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Buuctf-Web</h1>
+                    <h1 class="description center-align post-title">tqlctf</h1>
                 </div>
             </div>
         </div>
@@ -509,27 +509,22 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Buuctf-Web/">
-                                <span class="chip bg-color">Buuctf-Web</span>
-                            </a>
-                        
                             <a href="/tags/web/">
                                 <span class="chip bg-color">web</span>
+                            </a>
+                        
+                            <a href="/tags/ctf/">
+                                <span class="chip bg-color">ctf</span>
+                            </a>
+                        
+                            <a href="/tags/TQLctf/">
+                                <span class="chip bg-color">TQLctf</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/Buuctf/" class="post-category">
-                                Buuctf
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -538,7 +533,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-01-14
+                    2022-02-23
                 </div>
                 
 
@@ -562,14 +557,62 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="0x00-强网杯-2019-随便注"><a href="#0x00-强网杯-2019-随便注" class="headerlink" title="0x00[强网杯 2019]随便注"></a>0x00[强网杯 2019]随便注</h2><h3 id="1-1-强网杯-2019-随便注1"><a href="#1-1-强网杯-2019-随便注1" class="headerlink" title="1.1 [强网杯 2019]随便注1"></a>1.1 [强网杯 2019]随便注1</h3><h3 id=""><a href="#" class="headerlink" title=""></a></h3><p>默认参数为1，点击提交出现</p>
-<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220114144752205.png" alt="image-20220114144752205"></p>
-<p>猜测堆叠注入</p>
-<p>参考链接：<a href="https://kin9yh.github.io/7364/">Nosql注入 总结 (kin9yh)</a></p>
+                <h2 id="TQLctf-2022-misc"><a href="#TQLctf-2022-misc" class="headerlink" title="[TQLctf 2022]misc"></a>[TQLctf 2022]misc</h2><h3 id="0x00-Misc-之-the-Ohio-State-University"><a href="#0x00-Misc-之-the-Ohio-State-University" class="headerlink" title="0x00 Misc 之 the Ohio State University"></a>0x00 Misc 之 the Ohio State University</h3><p> <a href="..........%5CDownloads%5Cf4f264ab75874ca2aa1f4b04dc0bb024(1).osz">f4f264ab75874ca2aa1f4b04dc0bb024(1).osz</a> </p>
+<p>下载osu！ 软件解压 这个游戏类似节奏大师   压缩包里边是这段音乐</p>
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220223234252050.png" alt="image-20220223234252050"></p>
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220223234323547.png" alt="image-20220223234323547"></p>
+<p>音游 名字VVelcome！！</p>
+<p>osz ⽂件实际上就是 zip ⽂件，修改后缀名解压即可获得背景图、⾳频、⾳效和铺⾯⽂件。<br>通过查看铺⾯⽂件，我们可以获得该铺⾯所对应的 ID，然后去 Osu! 官⽹下载官⽅的铺⾯进⾏对⽐，发现有四<br>个⽂件经过了修改。（或者可以直接看⽂件的修改⽇期）</p>
+<ul>
+<li>flag 的第⼀部分被加密在背景图⽚中，经过了 steghide 加密，密码在图⽚的属性内可被找到</li>
+<li>flag 的第⼆部分被加密在 boom.wav 中，经过了 silenteye 加密，密码被写在 EASY 难度的铺⾯⽂件内</li>
+<li>flag 的第三部分被隐藏在最⾼难度的铺⾯⽂件中，通过游戏内置的编辑器可以发现最后的尾杀部分被修改成了⼀串⽆理多押，将 Note 转为 0/1 再通过⼆进制的解读可以获得 flag（例如下图，从下往上从左往右读为 00110101，转为字符为 5，其他以此类推）</li>
+</ul>
+<p><strong>第一部分</strong>：kali安装 steghide 根据属性中密码提示得出flag</p>
+<p>1.1</p>
+<pre class="language-none"><code class="language-none">apt-get install steghide</code></pre>
+
+<p>1.2查看是否有隐藏文件</p>
+<pre class="language-none"><code class="language-none">steghide  info /home/kali/Desktop/200813_HEXADIVER.jpg 
+//根据图片属性中的提示，猜测密码为：VVelcome!!</code></pre>
+
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220223235220762.png" alt="image-20220223235220762"></p>
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220223235039272.png" alt="image-20220223235039272"></p>
+<p>1.3 使用命令 将隐藏信息从载体中分离出来,得到flag1：TQLCTF{VVElcOM3 </p>
+<pre class="language-none"><code class="language-none">steghide  extract -sf  /home/kali/Desktop/200813_HEXADIVER.jpg </code></pre>
+
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220223235612725.png" alt="image-20220223235612725"></p>
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220223235319914.png" alt="image-20220223235319914"></p>
+<p>1.4 steghide 使用方法总结</p>
+<pre class="language-none"><code class="language-none">将secret.txt文件隐藏到text.jpg中：
+# steghide embed -cf test.jpg -ef secret.txt -p 123456
+
+从text.jpg解出secret.txt:
+#steghide extract -sf test.jpg -p 123456
+
+</code></pre>
+
+<h2 id="Steghide爆破密码："><a href="#Steghide爆破密码：" class="headerlink" title="Steghide爆破密码："></a>Steghide爆破密码：</h2><pre class="language-none"><code class="language-none">#bruteStegHide.sh 
+#!/bin/bash
+
+for line in `cat $2`;do
+    steghide extract -sf $1 -p $line &gt; /dev/null 2&gt;&amp;1
+    if [[ $? -eq 0 ]];then
+        echo 'password is: '$line
+        exit
+    fi  
+done </code></pre>
+
+<p>用法：<br> # ./bruteStegHide.sh test.jpg passwd.txt<br> 效果： </p>
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220224003728367.png" alt="image-20220224003728367"></p>
+<p>参考链接：<a target="_blank" rel="noopener" href="http://www.javashuo.com/article/p-barvfmbp-gx.html"></a></p>
+<p>未完 待续</p>
 <h3 id="1-3-pug模板注入基础"><a href="#1-3-pug模板注入基础" class="headerlink" title="1.3  pug模板注入基础"></a>1.3  pug模板注入基础</h3><p>参考链接：<a href="https://kin9yh.github.io/7364/">Nosql注入 总结 (kin9yh)</a></p>
 <h2 id="0x02解题思路"><a href="#0x02解题思路" class="headerlink" title="0x02解题思路"></a>0x02解题思路</h2><p>注册登录后发现自己注册的账户not active</p>
 <p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20211216144117735.png" alt="image-20211216144117735"></p>
 <p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20211216144117735.png" alt="image"></p>
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220303235725549.png" alt="image-20220303235725549"></p>
+<p><img src="https://raw.githubusercontent.com/kin9yh/TuChuang/master/img/image-20220303235725549.png"></p>
 <p>查看源码</p>
 <p>参考链接：<a target="_blank" rel="noopener" href="https://whoamianony.top/2021/07/30/Web%E5%AE%89%E5%85%A8/Nosql%20%E6%B3%A8%E5%85%A5%E4%BB%8E%E9%9B%B6%E5%88%B0%E4%B8%80/">Nosql 注入从零到一</a></p>
 <p>参考链接：<a href="https://kin9yh.github.io/7364/">Nosql 总结 (kin9yh)</a></p>
@@ -600,7 +643,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://kin9yh.github.io/16578/">https://kin9yh.github.io/16578/</a>
+                    <a href="https://kin9yh.github.io/56124/">https://kin9yh.github.io/56124/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -638,12 +681,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Buuctf-Web/">
-                                    <span class="chip bg-color">Buuctf-Web</span>
-                                </a>
-                            
                                 <a href="/tags/web/">
                                     <span class="chip bg-color">web</span>
+                                </a>
+                            
+                                <a href="/tags/ctf/">
+                                    <span class="chip bg-color">ctf</span>
+                                </a>
+                            
+                                <a href="/tags/TQLctf/">
+                                    <span class="chip bg-color">TQLctf</span>
                                 </a>
                             
                         </div>
@@ -817,13 +864,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/16580/">
+                <a href="/16107/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Buuctf-Pwn">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="ClashforWindows_RCE">
                         
-                        <span class="card-title">Buuctf-Pwn</span>
+                        <span class="card-title">ClashforWindows_RCE</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -834,7 +881,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-14
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-03
                         </span>
                         <span class="publish-author">
                             
@@ -854,13 +901,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/39374/">
+                <a href="/20054/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="终端安全技术趋势">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="山石网科2022冬令营_web">
                         
-                        <span class="card-title">终端安全技术趋势</span>
+                        <span class="card-title">山石网科2022冬令营_web</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -871,7 +918,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-17
                             </span>
                         <span class="publish-author">
                             
@@ -884,8 +931,16 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%BB%88%E7%AB%AF%E5%AE%89%E5%85%A8/">
-                        <span class="chip bg-color">终端安全</span>
+                    <a href="/tags/web/">
+                        <span class="chip bg-color">web</span>
+                    </a>
+                    
+                    <a href="/tags/ctf/">
+                        <span class="chip bg-color">ctf</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B1%B1%E7%9F%B3%E7%BD%91%E7%A7%91%E5%86%AC%E4%BB%A4%E8%90%A5-web/">
+                        <span class="chip bg-color">山石网科冬令营_web</span>
                     </a>
                     
                 </div>
