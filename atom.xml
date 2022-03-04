@@ -6,7 +6,7 @@
   <link href="https://kin9yh.github.io/atom.xml" rel="self"/>
   
   <link href="https://kin9yh.github.io/"/>
-  <updated>2022-03-03T16:48:13.835Z</updated>
+  <updated>2022-03-04T06:44:44.613Z</updated>
   <id>https://kin9yh.github.io/</id>
   
   <author>
@@ -17,18 +17,18 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>ClashforWindows_RCE</title>
+    <title>ClashforWindows_XSS-RCE</title>
     <link href="https://kin9yh.github.io/16107/"/>
     <id>https://kin9yh.github.io/16107/</id>
     <published>2022-03-03T15:52:35.000Z</published>
-    <updated>2022-03-03T16:48:13.835Z</updated>
+    <updated>2022-03-04T06:44:44.613Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;h3 id=&quot;一&quot;&gt;&lt;a href=&quot;#一&quot; class=&quot;headerlink&quot; title=&quot;一&quot;&gt;&lt;/a&gt;一&lt;/h3&gt;&lt;h4</summary>
+    <summary type="html">&lt;h3 id=&quot;一、ClashforWindows-RCE&quot;&gt;&lt;a href=&quot;#一、ClashforWindows-RCE&quot; class=&quot;headerlink&quot;</summary>
         
       
     
